@@ -106,7 +106,7 @@ export default function Playground() {
       />
       <div className="h-full max-h-3 border-y bg-muted-foreground/10 md:hidden" />
       <div className="flex w-full flex-[2_1_0%] flex-col justify-between gap-y-4 overflow-hidden pt-4 md:pt-0">
-        {messages.filter((message) => message.role !== "system").length ? (
+        {messages.length > 1 ? (
           <ChatMessagesList
             messages={messages}
             onDeleteMessage={deleteMessage}
