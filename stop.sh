@@ -28,14 +28,7 @@ if [ ! -z "$process_info" ]; then
     # 如果需要杀死该进程，取消下面两行的注释
     echo "正在终止进程..."
     kill -9 $pid
+    echo "stop success!!"
 else
     echo "在端口 $port 上没有找到进程。"
 fi
-
-sleep 2
-
-npm run build
-
-HOST="0.0.0.0" PORT="$port" nohup npm start > nohub.log 2>&1 &
-
-echo "start success!!"
