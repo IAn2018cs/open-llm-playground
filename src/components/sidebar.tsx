@@ -14,20 +14,6 @@ const routes = [
     color: "text-green-600",
     bgColor: "bg-green-100",
   },
-  {
-    label: "Assistant",
-    icon: Bot,
-    href: "/assistant",
-    color: "text-green-600",
-    bgColor: "bg-green-100",
-  },
-  {
-    label: "Fine-tuning",
-    icon: Settings2,
-    href: "/finetune",
-    color: "text-green-600",
-    bgColor: "bg-green-100",
-  },
 ];
 
 interface SidebarProps {

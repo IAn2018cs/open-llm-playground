@@ -44,7 +44,7 @@ const PromptForm = ({
             setInput(e.target.value);
             handleInputChange(e);
           }}
-          placeholder="Tell me a dad joke..."
+          placeholder="输入用户提示词...（按 ⌘ + Enter 发送）"
           spellCheck={false}
           className="my-0 min-h-0 w-full resize-none border-0 bg-transparent px-4 focus-within:outline-none focus-visible:ring-0 focus-visible:ring-transparent sm:text-sm md:min-h-[60px] md:py-[1.3rem]"
         />

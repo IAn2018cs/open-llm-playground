@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "clean": "rm -rf .next out",
+    "dev": "next dev -H $HOST -p $PORT --turbo ",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -H $HOST -p $PORT",
     "lint": "next lint",
     "format": "npx prettier --write .",
     "prepare": "husky install"
@@ -43,7 +44,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "lucide-react": "^0.292.0",
-    "next": "14.0.1",
+    "next": "14.2.5",
     "openai": "^4.14.2",
     "react": "^18",
     "react-dom": "^18",

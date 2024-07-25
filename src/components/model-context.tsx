@@ -8,7 +8,6 @@ interface ModelSettings {
   modelName: string;
   temperature: number;
   maxLength: number;
-  apiKey: string | null;
 }
 
 // Define the shape of the context state
@@ -34,7 +33,6 @@ export const ModelSettingsProvider = ({
       modelName: Models[0].modelName,
       temperature: Models[0].defaultTemperature,
       maxLength: Models[0].defaultTokens,
-      apiKey: null,
     },
   );
 

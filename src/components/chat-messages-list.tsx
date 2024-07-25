@@ -39,17 +39,15 @@ const ChatMessagesList = ({
       className={cn("flex w-full flex-col", className)}
       {...props}
     >
-      {messages
-        .filter((message) => message.role !== "system")
-        .map((message) => (
-          <ChatMessage
-            key={message.id}
-            message={message}
-            onDeleteMessage={onDeleteMessage}
-            onEditMessage={onEditMessage}
-            onChangeRole={onChangeRole}
-          />
-        ))}
+      {messages.map((message) => (
+        <ChatMessage
+          key={message.id}
+          message={message}
+          onDeleteMessage={onDeleteMessage}
+          onEditMessage={onEditMessage}
+          onChangeRole={onChangeRole}
+        />
+      ))}
     </div>
   );
 };

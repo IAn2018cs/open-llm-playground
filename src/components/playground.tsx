@@ -32,7 +32,6 @@ export default function Playground() {
       modelName: modelSettings.modelName,
       temperature: modelSettings.temperature,
       maxLength: modelSettings.maxLength,
-      apiKey: modelSettings.apiKey,
     },
     async onResponse(response) {
       if (response.status === 500) {
@@ -78,7 +77,10 @@ export default function Playground() {
   };
 
   const changeMessageRole = (id: string, currentRole: MessageRoleType) => {
-    const role = currentRole === "user" ? "assistant" : "user";
+    const roles: MessageRoleType[] = ["user", "system", "assistant"];
+    const currentIndex = roles.indexOf(currentRole);
+    const nextIndex = (currentIndex + 1) % roles.length;
+    const role = roles[nextIndex];
     setMessages(
       messages.map((message) =>
         message.id === id ? { ...message, role } : message,

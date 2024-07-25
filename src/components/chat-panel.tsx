@@ -30,7 +30,7 @@ const ChatPanel = ({
               className="h-auto bg-background px-3 py-2 text-xs focus-visible:ring-1 md:text-sm"
             >
               <IconStop className="mr-2" />
-              Stop generating
+              停止生成
             </Button>
           ) : (
             messages?.filter((msg) => msg.role !== "system").length > 0 && (
@@ -40,7 +40,7 @@ const ChatPanel = ({
                 className="h-auto bg-background px-3 py-2 text-xs focus-visible:ring-1 md:text-sm"
               >
                 <IconRefresh className="mr-2" />
-                Regenerate response
+                重新生成
               </Button>
             )
           )}

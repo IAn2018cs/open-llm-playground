@@ -50,9 +50,15 @@ const ChatMessage = ({
       </div>
       <DynamicTextarea
         value={message.content as string}
-        placeholder={`Enter ${
-          message.role === "user" ? "a user" : "an assistant"
-        } message here.`}
+        placeholder={`在这输入 ${
+          message.role === "user"
+            ? "user"
+            : message.role === "system"
+            ? "system"
+            : message.role === "assistant"
+            ? "assistant"
+            : "an unknown"
+        } 提示词`}
         onChange={(e) => {
           onEditMessage(message.id, e.target.value);
         }}

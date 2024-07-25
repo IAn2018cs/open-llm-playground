@@ -10,8 +10,8 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Open LLM Playground",
-  description: "Test your LLM prompts in the open LLM playground!",
+  title: "Open LLM 游乐场",
+  description: "在 Open LLM 游乐场测试您的 LLM 提示词!",
 };
 
 export default function RootLayout({
@@ -20,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="zh">
       <body className={inter.className}>
         <Toaster />
         <TooltipProvider delayDuration={200}>{children}</TooltipProvider>

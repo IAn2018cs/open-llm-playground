@@ -6,21 +6,23 @@ export const runtime = "edge";
 
 export async function POST(req: Request) {
   try {
-    const { messages, modelName, temperature, maxLength, apiKey } =
-      await req.json();
+    const { messages, modelName, temperature, maxLength } = await req.json();
 
     const openai = new OpenAI({
-      apiKey,
+      apiKey: process.env.OPENAI_API_KEY,
+      baseURL: process.env.OPENAI_API_BASE_URL,
     });
-
-    // console.log(messages, modelName, temperature, maxLength, apiKey);
+    const filterMessages = messages.filter(
+      (msg: { content: string }) => msg.content.trim() !== "",
+    );
+    console.log(filterMessages);
     const response = await openai.chat.completions
       .create({
         model: modelName,
         temperature: temperature,
         max_tokens: maxLength,
         stream: true,
-        messages: messages,
+        messages: filterMessages,
       })
       .asResponse();
 
