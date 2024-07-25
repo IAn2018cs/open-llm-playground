@@ -14,7 +14,6 @@ import { type MessageRoleType } from "@/lib/types";
 import { useModelSettings } from "@/components/model-context";
 
 export default function Playground() {
-  const [systemMsg, setSystemMsg] = useState<string>("");
   const { modelSettings } = useModelSettings();
 
   // ai sdk hook
@@ -41,27 +40,27 @@ export default function Playground() {
     },
   });
 
-  const updateSystemMessage = () => {
-    const systemMessage: Message = {
-      id: nanoid(),
-      role: "system",
-      content: systemMsg,
-    };
-
-    // update the first system message if exists
-    if (messages.length > 0 && messages[0].role === "system") {
-      setMessages([systemMessage, ...messages.slice(1)]);
-    } else {
-      setMessages([systemMessage, ...messages]);
-    }
-  };
-
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // update system message
-    updateSystemMessage();
     // send endpoint using vercel sdk
     handleSubmit(e);
+  };
+
+  const clearAllMessages = () => {
+    // 处理清空所有消息的逻辑
+    console.log("Clearing all messages");
+    setMessages([]);
+  };
+
+  const addMessage = (role: MessageRoleType, content: string) => {
+    // 处理添加消息的逻辑
+    console.log(`New ${role} message: ${content}`);
+    const newMessage: Message = {
+      id: nanoid(),
+      role: role,
+      content: content,
+    };
+    setMessages([...messages, newMessage]);
   };
 
   const deleteMessage = (id: string) => {
@@ -100,13 +99,13 @@ export default function Playground() {
   return (
     <div className="flex h-full w-full flex-col justify-between gap-x-6 md:flex-row">
       <SystemPromptInput
-        prompt={systemMsg}
-        setPrompt={setSystemMsg}
+        onAddMessage={addMessage}
+        onClearAllMessages={clearAllMessages}
         className="h-full flex-1"
       />
       <div className="h-full max-h-3 border-y bg-muted-foreground/10 md:hidden" />
       <div className="flex w-full flex-[2_1_0%] flex-col justify-between gap-y-4 overflow-hidden pt-4 md:pt-0">
-        {messages.length > 1 ? (
+        {messages.length > 0 ? (
           <ChatMessagesList
             messages={messages}
             onDeleteMessage={deleteMessage}
@@ -123,7 +122,6 @@ export default function Playground() {
           handleInputChange={handleInputChange}
           onSubmit={onSubmit}
           reload={(e) => {
-            updateSystemMessage();
             return reload(e);
           }}
           messages={messages}

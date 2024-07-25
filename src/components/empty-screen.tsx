@@ -9,9 +9,9 @@ const EmptyScreen = () => {
           欢迎来到 Open LLM 游乐场!
         </h1>
         <p className="text-center text-xs leading-normal text-muted-foreground md:mb-2 md:text-base">
-          游乐场可以帮助您测试 LLM 模型参数和提示
+          游乐场可以帮助您测试 LLM 模型参数和提示词
           <br />
-          您可以从下面输入提示开始
+          您可以从下面输入提示词开始
         </p>
       </div>
     </div>
